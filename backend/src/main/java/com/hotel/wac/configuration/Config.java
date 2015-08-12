@@ -32,6 +32,7 @@ import java.util.Properties;
 
 /**
  * Created by Igor_Tseluiko on 8/12/2015.
+ * Spring configuration class
  */
 @Configuration
 public class Config {
@@ -73,8 +74,8 @@ public class Config {
 
     @EnableTransactionManagement
     @Configuration
-    @PropertySource("classpath:test.properties")
-    @ComponentScan("com.hotel.wac")
+    @PropertySource("classpath:database.properties")
+    @ComponentScan("com.hotel.wac.repository")
     @EnableJpaRepositories("com.hotel.wac.repository")
     public static class JpaConfiguration {
 
@@ -110,7 +111,7 @@ public class Config {
         public EntityManagerFactory entityManagerFactory() {
             LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
             factoryBean.setDataSource(dataSource());
-            factoryBean.setPackagesToScan("com.epam.ic");
+            factoryBean.setPackagesToScan("com.hotel.wac.entity");
             factoryBean.setJpaProperties(getJpaProperties());
             factoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
             factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
