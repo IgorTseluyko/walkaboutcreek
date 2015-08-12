@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Igor_Tseluiko on 8/12/2015.
@@ -21,13 +21,25 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ClientRepositoryTest {
 
+    private static final Logger LOG = LoggerFactory.getLogger(ClientRepositoryTest.class);
+    @Autowired
+    private ClientRepository clientRepository;
 
     @Before
     public void setUp() throws Exception {
+        Client client = new Client("igor", "0501810453");
+        clientRepository.save(client);
+    }
+
+    @Test
+    public void testSave() {
+        LOG.info(clientRepository.findAll().toString());
+        assertEquals(1, clientRepository.count());
     }
 
 
     @After
     public void tearDown() throws Exception {
+        clientRepository.deleteAll();
     }
 }

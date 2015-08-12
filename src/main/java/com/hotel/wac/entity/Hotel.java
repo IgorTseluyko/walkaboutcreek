@@ -1,36 +1,36 @@
 package com.hotel.wac.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Created by Igor_Tseluiko on 8/12/2015.
  */
-@Entity
-@Table(name = "hotel")
+@Document(collection = "hotels")
 public class Hotel {
 
     @Id
-    @Column(name = "room_id")
+    @Indexed(unique = true)
     private long roomId;
 
-    @Column(name = "hotel_id")
-    private long hotelId;
+    @Indexed(unique = true)
+    private String clientId;
 
-    @Column(name = "client_id")
-    private long clientId;
-
-    @Column(name = "start_date")
+    @Indexed
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date startDate;
 
-    @Column(name = "end_date")
+    @Indexed
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date endDate;
 
-    @Column(name = "room_price")
     private long roomPrice;
+
+    private long hotelId;
 
     public Hotel() {
     }
@@ -51,11 +51,11 @@ public class Hotel {
         this.hotelId = hotelId;
     }
 
-    public long getClientId() {
+    public String getClientId() {
         return clientId;
     }
 
-    public void setClientId(long clientId) {
+    public void setClientId(String clientId) {
         this.clientId = clientId;
     }
 

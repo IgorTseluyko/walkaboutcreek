@@ -1,39 +1,49 @@
 package com.hotel.wac.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Created by Igor_Tseluiko on 8/12/2015.
  */
-@Entity
-@Table(name = "client")
+@Document(collection = "clients")
 public class Client {
 
     @Id
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
 
-    @Column(name = "name")
+    @Indexed(unique = true)
     private String name;
 
-    @Column(name = "phone")
+    @Indexed(unique = true)
     private String phone;
 
-    @Column(name = "date_of_last_visit")
+    @Indexed(unique = true)
+    private String email;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dateOfLastVisit;
 
-    @Column(name = "money_spent")
     private long moneySpent;
 
-    @Column(name = "transport_type")
     private String transportType;
 
-    @Column(name = "description")
     private String description;
+
+    private String password;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Date lastLogin;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Date lastPasswordChange;
 
     public Client() {
     }
@@ -43,16 +53,11 @@ public class Client {
         this.phone = phone;
     }
 
-    public Client(long id, String phone) {
-        this.id = id;
-        this.phone = phone;
-    }
-
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -104,16 +109,52 @@ public class Client {
         this.description = description;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public Date getLastPasswordChange() {
+        return lastPasswordChange;
+    }
+
+    public void setLastPasswordChange(Date lastPasswordChange) {
+        this.lastPasswordChange = lastPasswordChange;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", dateOfLastVisit=" + dateOfLastVisit +
                 ", moneySpent=" + moneySpent +
                 ", transportType='" + transportType + '\'' +
                 ", description='" + description + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", lastLogin=" + lastLogin +
+                ", lastPasswordChange=" + lastPasswordChange +
                 '}';
     }
 
