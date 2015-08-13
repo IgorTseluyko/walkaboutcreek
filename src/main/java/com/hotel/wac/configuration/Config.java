@@ -50,7 +50,7 @@ public class Config {
         @Bean
         public UrlBasedViewResolver setupViewResolver() {
             UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-            resolver.setPrefix("/pages/");
+            resolver.setPrefix("/views/");
             resolver.setSuffix(".jsp");
             resolver.setViewClass(JstlView.class);
             return resolver;
@@ -71,7 +71,7 @@ public class Config {
 
     @EnableTransactionManagement
     @Configuration
-    @ComponentScan("com.hotel.wac.repository")
+    @ComponentScan({"com.hotel.wac.repository", "com.hotel.wac.service"})
     @EnableMongoRepositories("com.hotel.wac.repository")
     public static class JpaConfiguration {
 

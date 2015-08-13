@@ -48,7 +48,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(String name, String phone) {
+    public Client(String email, String password) {
         this.name = name;
         this.phone = phone;
     }
