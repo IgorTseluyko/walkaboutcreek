@@ -39,7 +39,7 @@ public class Config {
 
     @EnableWebMvc
     @Configuration
-//    @ComponentScan("com.hotel.wac")
+    @ComponentScan("com.hotel.wac")
     public static class WebConfiguration extends WebMvcConfigurerAdapter {
 
         @Bean
@@ -70,7 +70,6 @@ public class Config {
 
     @EnableTransactionManagement
     @Configuration
-//    @ComponentScan(value = "com.hotel.wac")
     @EnableMongoRepositories("com.hotel.wac.repository")
     public static class JpaConfiguration {
 
