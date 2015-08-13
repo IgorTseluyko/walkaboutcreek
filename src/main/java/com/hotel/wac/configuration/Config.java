@@ -6,6 +6,7 @@ import com.mongodb.MongoClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -27,12 +28,9 @@ import java.util.List;
  * Spring configuration class
  */
 @Configuration
+@ComponentScan({"com.hotel.wac.service", "com.hotel.wac.session"})
+@PropertySource("classpath:cache.properties")
 public class Config {
-
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertyConfigIn() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
 
     @EnableWebMvc
     @Configuration
@@ -41,10 +39,7 @@ public class Config {
 
         @Bean
         public MultipartResolver multipartResolver() {
-            CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-            multipartResolver.setMaxUploadSize(500000000);
-            multipartResolver.setMaxInMemorySize(500000000);
-            return multipartResolver;
+            return new CommonsMultipartResolver();
         }
 
         @Bean
@@ -71,7 +66,7 @@ public class Config {
 
     @EnableTransactionManagement
     @Configuration
-    @ComponentScan({"com.hotel.wac.repository", "com.hotel.wac.service"})
+    @ComponentScan("com.hotel.wac.repository")
     @EnableMongoRepositories("com.hotel.wac.repository")
     public static class JpaConfiguration {
 
@@ -87,4 +82,9 @@ public class Config {
 
     }
 
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertyConfigIn() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 }

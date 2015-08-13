@@ -19,11 +19,34 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationService authService;
 
-    @RequestMapping(value = "/reg", method = RequestMethod.GET)
     @ResponseBody
+    @RequestMapping(value = "/reg", method = RequestMethod.GET)
     public ModelAndView register(@RequestParam String email,
-                           @RequestParam String password){
+                                 @RequestParam String password) {
         authService.register(email, password);
+        return new ModelAndView("someView");
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login(@RequestParam String email,
+                              @RequestParam String password) {
+        authService.login(email, password);
+        return new ModelAndView("someView");
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ModelAndView logout(@RequestParam String token) {
+        authService.logout(token);
+        return new ModelAndView("someView");
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/recover", method = RequestMethod.GET)
+    public ModelAndView recover(@RequestParam String email,
+                               @RequestParam String newPassword) {
+        authService.recoverPassword(email, newPassword);
         return new ModelAndView("someView");
     }
 

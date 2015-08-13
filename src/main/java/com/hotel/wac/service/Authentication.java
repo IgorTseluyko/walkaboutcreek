@@ -33,4 +33,5 @@ public interface Authentication {
      * @param newPassword - user's new password
      */
     void recoverPassword(String email, String newPassword);
+
 }

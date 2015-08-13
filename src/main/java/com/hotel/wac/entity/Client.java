@@ -31,6 +31,8 @@ public class Client {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dateOfLastVisit;
 
+    private String token;
+
     private long moneySpent;
 
     private String transportType;
@@ -49,8 +51,8 @@ public class Client {
     }
 
     public Client(String email, String password) {
-        this.name = name;
-        this.phone = phone;
+        this.email = email;
+        this.password = password;
     }
 
     public String getId() {
@@ -141,17 +143,26 @@ public class Client {
         this.lastPasswordChange = lastPasswordChange;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
                 ", dateOfLastVisit=" + dateOfLastVisit +
+                ", token='" + token + '\'' +
                 ", moneySpent=" + moneySpent +
                 ", transportType='" + transportType + '\'' +
                 ", description='" + description + '\'' +
-                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", lastLogin=" + lastLogin +
                 ", lastPasswordChange=" + lastPasswordChange +

@@ -22,9 +22,21 @@
         <javax.servlet.version>3.0.1</javax.servlet.version>
         <jackson.core.version>2.6.0</jackson.core.version>
         <javax.persistence.version>1.0.2</javax.persistence.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <jstl.version>1.2</jstl.version>
+        <guava.version>19.0-rc1</guava.version>
     </properties>
 
     <dependencies>
+
+        <!--GOOGLE-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <!--PERSISTANCE-->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
@@ -126,12 +138,12 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
+            <version>${commons-fileupload.version}</version>
         </dependency>
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
         </dependency>
     </dependencies>
 

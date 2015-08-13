@@ -8,4 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * Spring-Data repository for table "customer"
  */
 public interface ClientRepository extends MongoRepository<Client, Long> {
+
+    Client findByName(String name);
+
 }

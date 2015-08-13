@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Date;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -27,14 +29,16 @@ public class ClientRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        Client client = new Client("igor", "0501810453");
+        Client client = new Client("igor@epam.com", "0501810453");
+        client.setName("igor");
         clientRepository.save(client);
     }
 
     @Test
     public void testSave() {
-        LOG.info(clientRepository.findAll().toString());
+        LOG.info(clientRepository.findByName("igor").toString());
         assertEquals(1, clientRepository.count());
+
     }
 
 
