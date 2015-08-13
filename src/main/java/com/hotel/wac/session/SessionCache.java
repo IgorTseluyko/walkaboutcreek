@@ -26,11 +26,11 @@ public class SessionCache {
             .maximumSize(size)
             .build();
 
-    public void put(String token, Client client){
+    public void put(String token, Client client) {
         cache.put(token, client);
     }
 
-    public boolean checkToken(String token){
+    public boolean checkToken(String token) {
         Client client = cache.getIfPresent(token);
         return Objects.isNull(client);
     }

@@ -20,9 +20,6 @@ public class Client {
     private String id;
 
     @Indexed(unique = true)
-    private String name;
-
-    @Indexed(unique = true)
     private String phone;
 
     @Indexed(unique = true)
@@ -30,6 +27,14 @@ public class Client {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dateOfLastVisit;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Date lastLogin;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Date lastPasswordChange;
+
+    private String name;
 
     private String token;
 
@@ -40,12 +45,6 @@ public class Client {
     private String description;
 
     private String password;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date lastLogin;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date lastPasswordChange;
 
     public Client() {
     }

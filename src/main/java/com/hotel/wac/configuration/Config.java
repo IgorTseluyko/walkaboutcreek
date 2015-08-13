@@ -28,13 +28,18 @@ import java.util.List;
  * Spring configuration class
  */
 @Configuration
-@ComponentScan({"com.hotel.wac.service", "com.hotel.wac.session"})
+@ComponentScan("com.hotel.wac")
 @PropertySource("classpath:cache.properties")
 public class Config {
 
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertyConfigIn() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
+
     @EnableWebMvc
     @Configuration
-    @ComponentScan("com.hotel.wac.controller")
+//    @ComponentScan("com.hotel.wac")
     public static class WebConfiguration extends WebMvcConfigurerAdapter {
 
         @Bean
@@ -55,18 +60,17 @@ public class Config {
         public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
             super.configureMessageConverters(converters);
 
-            final MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-            final ObjectMapper objectMapper = new ObjectMapper();
+            MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+            ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
             converter.setObjectMapper(objectMapper);
             converters.add(converter);
         }
     }
 
-
     @EnableTransactionManagement
     @Configuration
-    @ComponentScan("com.hotel.wac.repository")
+//    @ComponentScan(value = "com.hotel.wac")
     @EnableMongoRepositories("com.hotel.wac.repository")
     public static class JpaConfiguration {
 
@@ -80,11 +84,5 @@ public class Config {
             return new MongoTemplate(mongoClient(), "db_mongo");
         }
 
-    }
-
-
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertyConfigIn() {
-        return new PropertySourcesPlaceholderConfigurer();
     }
 }

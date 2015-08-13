@@ -24,7 +24,7 @@ public class AuthenticationController {
     public ModelAndView register(@RequestParam String email,
                                  @RequestParam String password) {
         authService.register(email, password);
-        return new ModelAndView("someView");
+        return new ModelAndView("registration");
     }
 
     @ResponseBody
@@ -45,7 +45,7 @@ public class AuthenticationController {
     @ResponseBody
     @RequestMapping(value = "/recover", method = RequestMethod.GET)
     public ModelAndView recover(@RequestParam String email,
-                               @RequestParam String newPassword) {
+                                @RequestParam String newPassword) {
         authService.recoverPassword(email, newPassword);
         return new ModelAndView("someView");
     }

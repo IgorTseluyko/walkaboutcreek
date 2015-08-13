@@ -20,11 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by Igor_Tseluiko on 8/12/2015.
  */
-@ContextConfiguration(classes = {
-        Config.JpaConfiguration.class,
-        Config.WebConfiguration.class,
-        Config.class
-})
+@ContextConfiguration(classes = Config.class)
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AuthenticationControllerTest {
