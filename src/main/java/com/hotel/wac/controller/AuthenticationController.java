@@ -24,7 +24,7 @@ public class AuthenticationController {
     public ModelAndView register(@RequestParam String email,
                                  @RequestParam String password) {
         authService.register(email, password);
-        return new ModelAndView("registration");
+        return new ModelAndView("auth/registration");
     }
 
     @ResponseBody
@@ -32,14 +32,14 @@ public class AuthenticationController {
     public ModelAndView login(@RequestParam String email,
                               @RequestParam String password) {
         authService.login(email, password);
-        return new ModelAndView("login");
+        return new ModelAndView("auth/login");
     }
 
     @ResponseBody
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ModelAndView logout(@RequestParam String token) {
         authService.logout(token);
-        return new ModelAndView("logout");
+        return new ModelAndView("auth/logout");
     }
 
     @ResponseBody
@@ -47,7 +47,7 @@ public class AuthenticationController {
     public ModelAndView recover(@RequestParam String email,
                                 @RequestParam String newPassword) {
         authService.recoverPassword(email, newPassword);
-        return new ModelAndView("recover");
+        return new ModelAndView("auth/recover");
     }
 
 }

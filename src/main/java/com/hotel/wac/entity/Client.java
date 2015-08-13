@@ -25,26 +25,17 @@ public class Client {
     @Indexed(unique = true)
     private String email;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date dateOfLastVisit;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date lastLogin;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date lastPasswordChange;
-
     private String name;
 
     private String token;
 
     private long moneySpent;
 
-    private String transportType;
-
-    private String description;
-
     private String password;
+    
+    private String userType;
+    
+    private int discount;
 
     public Client() {
     }
@@ -78,36 +69,12 @@ public class Client {
         this.phone = phone;
     }
 
-    public Date getDateOfLastVisit() {
-        return dateOfLastVisit;
-    }
-
-    public void setDateOfLastVisit(Date dateOfLastVisit) {
-        this.dateOfLastVisit = dateOfLastVisit;
-    }
-
     public long getMoneySpent() {
         return moneySpent;
     }
 
     public void setMoneySpent(long moneySpent) {
         this.moneySpent = moneySpent;
-    }
-
-    public String getTransportType() {
-        return transportType;
-    }
-
-    public void setTransportType(String transportType) {
-        this.transportType = transportType;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getEmail() {
@@ -126,22 +93,6 @@ public class Client {
         this.password = password;
     }
 
-    public Date getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(Date lastLogin) {
-        this.lastLogin = lastLogin;
-    }
-
-    public Date getLastPasswordChange() {
-        return lastPasswordChange;
-    }
-
-    public void setLastPasswordChange(Date lastPasswordChange) {
-        this.lastPasswordChange = lastPasswordChange;
-    }
-
     public String getToken() {
         return token;
     }
@@ -150,21 +101,34 @@ public class Client {
         this.token = token;
     }
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", dateOfLastVisit=" + dateOfLastVisit +
+                ", name='" + name + '\'' +
                 ", token='" + token + '\'' +
                 ", moneySpent=" + moneySpent +
-                ", transportType='" + transportType + '\'' +
-                ", description='" + description + '\'' +
                 ", password='" + password + '\'' +
-                ", lastLogin=" + lastLogin +
-                ", lastPasswordChange=" + lastPasswordChange +
+                ", userType='" + userType + '\'' +
+                ", discount=" + discount +
                 '}';
     }
 

@@ -1,7 +1,7 @@
 package com.hotel.wac.repository;
 
 import com.hotel.wac.configuration.Config;
-import com.hotel.wac.entity.Hotel;
+import com.hotel.wac.entity.Booking;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,25 +17,25 @@ import static org.junit.Assert.assertEquals;
  */
 @ContextConfiguration(classes = Config.JpaConfiguration.class)
 @RunWith(SpringJUnit4ClassRunner.class)
-public class HotelRepositoryTest {
+public class BookingRepositoryTest {
 
     @Autowired
-    private HotelRepository hotelRepository;
+    private BookingRepository bookingRepository;
 
     @Before
     public void setUp() throws Exception {
-        Hotel hotel = new Hotel();
+        Booking hotel = new Booking();
         hotel.setClientId("asd123");
-        hotelRepository.save(hotel);
+        bookingRepository.save(hotel);
     }
 
     @Test
     public void testSave() {
-        assertEquals(1, hotelRepository.count());
+        assertEquals(1, bookingRepository.count());
     }
 
     @After
     public void tearDown() throws Exception {
-        hotelRepository.deleteAll();
+        bookingRepository.deleteAll();
     }
 }
