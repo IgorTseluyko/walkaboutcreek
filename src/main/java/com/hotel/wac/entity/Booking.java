@@ -36,7 +36,7 @@ public class Booking {
     
     private int persons;
     
-    private String bookingSource; //MASHAAAA !!!!!!!111
+    private String bookingSource;
 
     private double totalPrice;
 

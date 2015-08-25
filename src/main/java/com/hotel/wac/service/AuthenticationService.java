@@ -19,7 +19,6 @@ public class AuthenticationService implements Authentication {
     @Override
     public void register(String email, String password) {
         Client client = new Client(email, password);
-        client.setLastPasswordChange(new Date());
 
         clientRepository.save(client);
     }
