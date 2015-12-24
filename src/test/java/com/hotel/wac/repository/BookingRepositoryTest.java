@@ -74,7 +74,6 @@ public class BookingRepositoryTest {
 
         bookingRepository
                 .findByStartDateAfterAndEndDateBefore(Date.from(instantStart), Date.from(instantEnd))
-                .stream()
                 .forEach(b -> LOG.info(b.toString()));
     }
 
